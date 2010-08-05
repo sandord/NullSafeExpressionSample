@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullSafeExpressionSample", "NullSafeExpressionSample\NullSafeExpressionSample.csproj", "{CE011C94-8BEA-423E-AE06-131996685023}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullSafeExpressionSampleTests", "NullSafeExpressionSampleTests\NullSafeExpressionSampleTests.csproj", "{8CCDA586-A48F-4F4A-B1BA-7FA3E1880773}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE011C94-8BEA-423E-AE06-131996685023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE011C94-8BEA-423E-AE06-131996685023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE011C94-8BEA-423E-AE06-131996685023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE011C94-8BEA-423E-AE06-131996685023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CCDA586-A48F-4F4A-B1BA-7FA3E1880773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CCDA586-A48F-4F4A-B1BA-7FA3E1880773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CCDA586-A48F-4F4A-B1BA-7FA3E1880773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CCDA586-A48F-4F4A-B1BA-7FA3E1880773}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
