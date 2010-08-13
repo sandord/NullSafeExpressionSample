@@ -20,7 +20,7 @@ namespace NullSafeExpressionSample
     public static class NullSafeExpressionHandler
     {
         private static readonly object expressionCacheLock = new object();
-        private static readonly Dictionary<Expression, Delegate> expressionCache = new Dictionary<Expression, Delegate>();
+        private static readonly Dictionary<string, Delegate> expressionCache = new Dictionary<string, Delegate>();
 
         /// <summary>
         ///     Returns the value of the specified expression, returning the default value of the
@@ -106,7 +106,9 @@ namespace NullSafeExpressionSample
 
             lock (expressionCacheLock)
             {
-                if (!expressionCache.ContainsKey(expression))
+                string key = expression.ToString();
+
+                if (!expressionCache.ContainsKey(key))
                 {
                     MemberExpression body = GetBody<TSource, TResult>(expression);
 
@@ -128,11 +130,11 @@ namespace NullSafeExpressionSample
                         function = CreateSafeGetDelegate<TSource, TResult>(reversedSourceFragments);
                     }
 
-                    expressionCache[expression] = function;
+                    expressionCache[key] = function;
                 }
                 else
                 {
-                    function = (Func<TSource, TResult>)expressionCache[expression];
+                    function = (Func<TSource, TResult>)expressionCache[key];
                 }
             }
 
