@@ -24,34 +24,23 @@ namespace NullSafeExpressionSample
 
         /// <summary>
         ///     Returns the value of the specified expression, returning the default value of the
-        ///     result type (<c>null</c> for reference types) instead of throwing an exception when
-        ///     one or more of the referenced members in the expression are <c>null</c>.
+        ///     result type (<c>null</c> for reference types) instead of throwing an exception
+        ///     when one or more of the referenced members in the expression are <c>null</c>.
         /// </summary>
-        /// <typeparam name="TSource">
-        ///     The type of the instance to evaluate the expression on.
-        /// </typeparam>
-        /// <typeparam name="TResult">
-        ///     The type of the result.
-        /// </typeparam>
-        /// <param name="instance">
-        ///     The instance the method must operate on.
-        /// </param>
-        /// <param name="expression">
-        ///     The expression to evaluate.
-        /// </param>
-        /// <returns>
-        ///     The result of the expression or the default value of the result type, if one or more
-        ///     of the referenced members in the expression are <c>null</c>.
-        /// </returns>
-        /// <remarks>
-        ///     When calling this method multiple times in the same AppDomain and providing the same
-        ///     expression, a cached instance of the delegate will be returned.
-        /// </remarks>
+        /// <typeparam name="TSource">The type of the instance to evaluate the expression on.</typeparam>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="instance">The instance the method must operate on.</param>
+        /// <param name="expression">The expression to evaluate.</param>
+        /// <returns>The result of the expression or the default value of the result type, if one or more of the referenced members in the expression are <c>null</c>.</returns>
         /// <exception cref="ArgumentNullException">
         ///     The specified <paramref name="instance"/> is <c>null</c>.
         ///     -or-
         ///     The specified <paramref name="expression"/> is <c>null</c>.
         /// </exception>
+        /// <remarks>
+        ///     When calling this method multiple times in the same AppDomain and providing the
+        ///     same expression, a cached instance of the delegate will be returned.
+        /// </remarks>
         public static TResult SafeGet<TSource, TResult>(TSource instance, Expression<Func<TSource, TResult>> expression)
         {
             if (instance == null)
@@ -72,29 +61,16 @@ namespace NullSafeExpressionSample
         ///     instead of throwing an exception when one or more of the referenced members in the
         ///     expression are <c>null</c>.
         /// </summary>
-        /// <typeparam name="TSource">
-        ///     The type of the instance to evaluate the expression on.
-        /// </typeparam>
-        /// <typeparam name="TResult">
-        ///     The type of the result.
-        /// </typeparam>
-        /// <param name="expression">
-        ///     The expression to evaluate.
-        /// </param>
-        /// <returns>
-        ///     The function that represents the expression or the default value of the result type,
-        ///     if one or more of the referenced members in the expression are <c>null</c>.
-        /// </returns>
+        /// <typeparam name="TSource">The type of the instance to evaluate the expression on.</typeparam>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="expression">The expression to evaluate.</param>
+        /// <returns>The function that represents the expression or the default value of the result type, if one or more of the referenced members in the expression are <c>null</c>.</returns>
+        /// <exception cref="ArgumentNullException">The specified <paramref name="expression"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentException">The specified <paramref name="expression"/> does not appear to express a value.</exception>
         /// <remarks>
-        ///     When calling this method multiple times in the same AppDomain and providing the same
-        ///     expression, a cached instance of the delegate will be returned.
+        ///     When calling this method multiple times in the same AppDomain and providing the
+        ///     same expression, a cached instance of the delegate will be returned.
         /// </remarks>
-        /// <exception cref="ArgumentNullException">
-        ///     The specified <paramref name="expression"/> is <c>null</c>.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        ///     The specified <paramref name="expression"/> does not appear to express a value.
-        /// </exception>
         public static Func<TSource, TResult> GetSafeGetDelegate<TSource, TResult>(Expression<Func<TSource, TResult>> expression)
         {
             if (expression == null)
@@ -145,19 +121,10 @@ namespace NullSafeExpressionSample
         ///     Returns a new delegate that safely gets the result of the specified expression
         ///     fragments.
         /// </summary>
-        /// <typeparam name="TSource">
-        ///     The instance type.
-        /// </typeparam>
-        /// <typeparam name="TResult">
-        ///     The result type.
-        /// </typeparam>
-        /// <param name="expressionFragments">
-        ///     The expression fragments, which will be processed in the order as specified.
-        /// </param>
-        /// <returns>
-        ///     The result or the default value of the result type, if one or more of the referenced
-        ///     members in the expression are <c>null</c>.
-        /// </returns>
+        /// <typeparam name="TSource">The instance type.</typeparam>
+        /// <typeparam name="TResult">The result type.</typeparam>
+        /// <param name="expressionFragments">The expression fragments, which will be processed in the order as specified.</param>
+        /// <returns>The result or the default value of the result type, if one or more of the referenced members in the expression are <c>null</c>.</returns>
         private static Func<TSource, TResult> CreateSafeGetDelegate<TSource, TResult>(IList<MemberExpression> expressionFragments)
         {
             List<Expression> targetFragments = new List<Expression>();
@@ -219,18 +186,10 @@ namespace NullSafeExpressionSample
         /// <summary>
         ///     Returns the body of the specified expression.
         /// </summary>
-        /// <typeparam name="TSource">
-        ///     The expression type.
-        /// </typeparam>
-        /// <typeparam name="TResult">
-        ///     The result type.
-        /// </typeparam>
-        /// <param name="expression">
-        ///     The expression.
-        /// </param>
-        /// <returns>
-        ///     The expression body.
-        /// </returns>
+        /// <typeparam name="TSource">The expression type.</typeparam>
+        /// <typeparam name="TResult">The result type.</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <returns>The expression body.</returns>
         private static MemberExpression GetBody<TSource, TResult>(Expression<Func<TSource, TResult>> expression)
         {
             switch (expression.Body.NodeType)
@@ -248,12 +207,8 @@ namespace NullSafeExpressionSample
         /// <summary>
         ///     Returns the fragments of which the specified expression is made up.
         /// </summary>
-        /// <param name="expression">
-        ///     The expression.
-        /// </param>
-        /// <returns>
-        ///     The fragment expressions.
-        /// </returns>
+        /// <param name="expression">The expression.</param>
+        /// <returns>The fragment expressions.</returns>
         private static IList<MemberExpression> GetFragments(MemberExpression expression)
         {
             List<MemberExpression> fragments = new List<MemberExpression>();

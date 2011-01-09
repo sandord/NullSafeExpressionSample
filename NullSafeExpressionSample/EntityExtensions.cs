@@ -23,25 +23,14 @@ namespace NullSafeExpressionSample
     {
         /// <summary>
         ///     Returns the value of the specified expression, returning the default value of the
-        ///     result type (<c>null</c> for reference types) instead of throwing an exception when
-        ///     one or more of the referenced members in the expression are <c>null</c>.
+        ///     result type (<c>null</c> for reference types) instead of throwing an exception
+        ///     when one or more of the referenced members in the expression are <c>null</c>.
         /// </summary>
-        /// <typeparam name="TSource">
-        ///     The type of the source instance to evaluate the expression on.
-        /// </typeparam>
-        /// <typeparam name="TResult">
-        ///     The type of the result.
-        /// </typeparam>
-        /// <param name="instance">
-        ///     The instance the method must operate on.
-        /// </param>
-        /// <param name="expression">
-        ///     The expression to evaluate.
-        /// </param>
-        /// <returns>
-        ///     The result of the expression or the default value of the result type, if one or more
-        ///     of the referenced members in the expression are <c>null</c>.
-        /// </returns>
+        /// <typeparam name="TSource">The type of the source instance to evaluate the expression on.</typeparam>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="instance">The instance the method must operate on.</param>
+        /// <param name="expression">The expression to evaluate.</param>
+        /// <returns>The result of the expression or the default value of the result type, if one or more of the referenced members in the expression are <c>null</c>.</returns>
         /// <exception cref="ArgumentNullException">
         ///     The specified <paramref name="instance"/> is <c>null</c>.
         ///     -or-

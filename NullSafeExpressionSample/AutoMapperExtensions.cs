@@ -22,21 +22,13 @@ namespace NullSafeExpressionSample
     {
         /// <summary>
         ///     Maps the specified source member in such way, that the default value of the result
-        ///     type (<c>null</c> for reference types) is used instead of throwing an exception when
-        ///     one or more of the referenced members in the expression are <c>null</c>.
+        ///     type (<c>null</c> for reference types) is used instead of throwing an exception
+        ///     when one or more of the referenced members in the expression are <c>null</c>.
         /// </summary>
-        /// <typeparam name="TSource">
-        ///     The source type.
-        /// </typeparam>
-        /// <typeparam name="TMember">
-        ///     The member type.
-        /// </typeparam>
-        /// <param name="instance">
-        ///     The instance the method must operate on.
-        /// </param>
-        /// <param name="mapping">
-        ///     The mapping expression.
-        /// </param>
+        /// <typeparam name="TSource">The source type.</typeparam>
+        /// <typeparam name="TMember">The member type.</typeparam>
+        /// <param name="instance">The instance the method must operate on.</param>
+        /// <param name="mapping">The mapping expression.</param>
         /// <exception cref="ArgumentNullException">
         ///     The specified <paramref name="instance"/> is <c>null</c>.
         ///     -or-
