@@ -45,7 +45,7 @@ namespace NullSafeExpressionSample
                 throw new ArgumentNullException("mapping");
             }
 
-            instance.MapFrom(NullSafeExpressionHandler.GetSafeGetDelegate<TSource, TMember>(mapping));
+            instance.MapFrom<TMember>(n => NullSafeExpressionHandler.GetSafeGetDelegate(mapping)(n));
         }
     }
 }

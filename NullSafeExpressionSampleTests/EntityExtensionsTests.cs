@@ -12,7 +12,6 @@ using System.Linq;
 
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SharpArch.Core.DomainModel;
 
 using NullSafeExpressionSample;
 using NullSafeExpressionSampleTests.TestDoubles;
