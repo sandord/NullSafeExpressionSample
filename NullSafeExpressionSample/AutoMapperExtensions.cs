@@ -42,7 +42,7 @@ namespace NullSafeExpressionSample
                 throw new ArgumentNullException("mapping");
             }
 
-            instance.MapFrom<TMember>(n => NullSafeExpressionHandler.GetSafeGetDelegate(mapping)(n));
+            instance.MapFrom(n => NullSafeExpressionHandler.GetSafeGetDelegate(mapping)(n));
         }
     }
 }
