@@ -5,17 +5,12 @@
  See http://creativecommons.org/licenses/by/3.0/
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using AutoMapper;
-
-using NullSafeExpressionSample;
-
 namespace NullSafeExpressionSampleTests.TestDoubles
 {
+    using AutoMapper;
+
+    using NullSafeExpressionSample;
+
     public class TestAutoMapperProfile : Profile
     {
         protected override void Configure()

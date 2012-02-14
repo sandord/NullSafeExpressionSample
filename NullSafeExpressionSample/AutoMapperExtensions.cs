@@ -5,16 +5,13 @@
  See http://creativecommons.org/licenses/by/3.0/
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-
-using AutoMapper;
-
 namespace NullSafeExpressionSample
 {
+    using System;
+    using System.Linq.Expressions;
+
+    using AutoMapper;
+
     /// <summary>
     ///     Provides extension methods that add additional functionality to the AutoMapper library.
     /// </summary>

@@ -5,19 +5,13 @@
  See http://creativecommons.org/licenses/by/3.0/
 */
 
-using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-
-using AutoMapper;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using NullSafeExpressionSample;
-using NullSafeExpressionSampleTests.TestDoubles;
-
 namespace NullSafeExpressionSampleTests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using NullSafeExpressionSample;
+    using NullSafeExpressionSampleTests.TestDoubles;
+
     [TestClass]
     public class EntityExtensionsTests
     {

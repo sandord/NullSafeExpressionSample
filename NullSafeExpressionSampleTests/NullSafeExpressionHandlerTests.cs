@@ -5,20 +5,17 @@
  See http://creativecommons.org/licenses/by/3.0/
 */
 
-using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using NullSafeExpressionSample;
-using NullSafeExpressionSampleTests.TestDoubles;
-
-using SharpArch.Domain.DomainModel;
-
 namespace NullSafeExpressionSampleTests
 {
+    using System;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using NullSafeExpressionSample;
+    using NullSafeExpressionSampleTests.TestDoubles;
+
+    using SharpArch.Domain.DomainModel;
+
     [TestClass]
     public class NullSafeExpressionHandlerTests
     {
@@ -123,5 +120,4 @@ namespace NullSafeExpressionSampleTests
             Assert.AreEqual(result, default(int));
         }
     }
-
 }

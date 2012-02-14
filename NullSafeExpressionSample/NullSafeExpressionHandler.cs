@@ -5,21 +5,27 @@
  See http://creativecommons.org/licenses/by/3.0/
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
-
 namespace NullSafeExpressionSample
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Reflection;
+
     /// <summary>
     ///     Provides a means of handling lambda expressions in a null safe manner.
     /// </summary>
     public static class NullSafeExpressionHandler
     {
+        /// <summary>
+        ///     Manages locking of items in the expression cache.
+        /// </summary>
         private static readonly object expressionCacheLock = new object();
+
+        /// <summary>
+        ///     Contains cached expressions.
+        /// </summary>
         private static readonly Dictionary<string, Delegate> expressionCache = new Dictionary<string, Delegate>();
 
         /// <summary>

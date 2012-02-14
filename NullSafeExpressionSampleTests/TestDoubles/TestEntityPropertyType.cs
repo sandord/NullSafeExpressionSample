@@ -5,11 +5,6 @@
  See http://creativecommons.org/licenses/by/3.0/
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace NullSafeExpressionSampleTests.TestDoubles
 {
     internal class TestEntityPropertyType

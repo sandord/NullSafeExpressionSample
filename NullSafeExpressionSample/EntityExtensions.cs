@@ -5,13 +5,13 @@
  See http://creativecommons.org/licenses/by/3.0/
 */
 
-using System;
-using System.Linq.Expressions;
-
-using SharpArch.Domain.DomainModel;
-
 namespace NullSafeExpressionSample
 {
+    using System;
+    using System.Linq.Expressions;
+
+    using SharpArch.Domain.DomainModel;
+
     /// <summary>
     ///     Provides methods that extend entity types.
     /// </summary>
