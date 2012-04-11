@@ -70,7 +70,6 @@ namespace NullSafeExpressionSample
         /// <typeparam name="TSource">The type of the instance to evaluate the expression on.</typeparam>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="expression">The expression to evaluate.</param>
-        /// <param name="instance">The instance.</param>
         /// <returns>The function that represents the expression or the default value of the result type, if one or more of the referenced members in the expression are <c>null</c>.</returns>
         /// <exception cref="ArgumentNullException">The specified <paramref name="expression"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentException">The specified <paramref name="expression"/> does not appear to express a value.</exception>
