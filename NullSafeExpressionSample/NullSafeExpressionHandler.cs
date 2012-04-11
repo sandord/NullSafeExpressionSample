@@ -26,7 +26,7 @@ namespace NullSafeExpressionSample
         /// <summary>
         ///     Contains cached expressions.
         /// </summary>
-        private static readonly Dictionary<string, Delegate> expressionCache = new Dictionary<string, Delegate>();
+        private static readonly Dictionary<ExpressionCacheKey, Delegate> expressionCache = new Dictionary<ExpressionCacheKey, Delegate>();
 
         /// <summary>
         ///     Returns the value of the specified expression, returning the default value of the
@@ -70,6 +70,7 @@ namespace NullSafeExpressionSample
         /// <typeparam name="TSource">The type of the instance to evaluate the expression on.</typeparam>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="expression">The expression to evaluate.</param>
+        /// <param name="instance">The instance.</param>
         /// <returns>The function that represents the expression or the default value of the result type, if one or more of the referenced members in the expression are <c>null</c>.</returns>
         /// <exception cref="ArgumentNullException">The specified <paramref name="expression"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentException">The specified <paramref name="expression"/> does not appear to express a value.</exception>
@@ -88,7 +89,11 @@ namespace NullSafeExpressionSample
 
             lock (expressionCacheLock)
             {
-                string key = expression.ToString();
+                ExpressionCacheKey key = new ExpressionCacheKey()
+                {
+                    Expression = expression.ToString(),
+                    InstanceType = typeof(TSource)
+                };
 
                 if (!expressionCache.ContainsKey(key))
                 {
@@ -226,6 +231,64 @@ namespace NullSafeExpressionSample
             }
 
             return fragments;
+        }
+
+        /// <summary>
+        ///     An expression cache key.
+        /// </summary>
+        private struct ExpressionCacheKey
+        {
+            /// <summary>
+            ///     The expression string.
+            /// </summary>
+            public string Expression;
+
+            /// <summary>
+            ///     The instance type the expression can be invoked on.
+            /// </summary>
+            public Type InstanceType;
+
+            /// <summary>
+            ///     Implements the operator ==.
+            /// </summary>
+            /// <param name="x">The x.</param>
+            /// <param name="y">The y.</param>
+            /// <returns>The result of the operator.</returns>
+            public static bool operator ==(ExpressionCacheKey x, ExpressionCacheKey y)
+            {
+                return x.Expression == y.Expression && x.InstanceType == y.InstanceType;
+            }
+
+            /// <summary>
+            ///     Implements the operator !=.
+            /// </summary>
+            /// <param name="x">The x.</param>
+            /// <param name="y">The y.</param>
+            /// <returns>The result of the operator.</returns>
+            public static bool operator !=(ExpressionCacheKey x, ExpressionCacheKey y)
+            {
+                return !(x == y);
+            }
+
+            /// <summary>
+            ///     Determines whether the specified <see cref="System.Object"/> is equal to this
+            ///     instance.
+            /// </summary>
+            /// <param name="obj">Another object to compare to.</param>
+            /// <returns><c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
+            public override bool Equals(object obj)
+            {
+                return obj is ExpressionCacheKey && this == (ExpressionCacheKey)obj;
+            }
+
+            /// <summary>
+            ///     Returns a hash code for this instance.
+            /// </summary>
+            /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+            public override int GetHashCode()
+            {
+                return Expression.GetHashCode() ^ InstanceType.GetHashCode();
+            }
         }
     }
 }

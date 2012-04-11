@@ -119,5 +119,28 @@ namespace NullSafeExpressionSampleTests
             Assert.AreEqual(result.GetType(), typeof(int));
             Assert.AreEqual(result, default(int));
         }
+
+        [TestMethod]
+        public void SafeGet_UsingTwoDifferentObjectsAccessingEquallyNamedProperty_ReturnsCorrectPropertyValue()
+        {
+            // Arrange.
+            TestEntity subject1 = new TestEntity()
+            {
+                Property1 = new TestEntityPropertyType()
+            };
+
+            TestEntity2 subject2 = new TestEntity2()
+            {
+                Property1 = new TestEntityPropertyType()
+            };
+
+            // Act.
+            var result = NullSafeExpressionHandler.SafeGet(subject1, n => n.Property1);
+            result = NullSafeExpressionHandler.SafeGet(subject2, n => n.Property1);
+
+            // Assert.
+            Assert.IsNotNull(result);
+            Assert.AreEqual(subject2.Property1, result);
+        }
     }
 }
